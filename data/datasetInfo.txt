@@ -1,0 +1,9 @@
+FEATURES:
+
+Kicker_Foot: Foot with which the kick was taken. 
+Kicker_Side: Where did the kicker shoot.   ### VARIABLE OBJETIVO###
+Home_goals: Amount of goals for the home team
+Away_Goals: Amount of goals for the away team
+Minute: Minute the shot was taken
+Team_Type: If "H" the kicker team was Home, if "A" the kicker team was away.
+
