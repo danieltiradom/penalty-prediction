@@ -13,6 +13,14 @@ def runPreprocess(data):
         "Team_Type"
     ])
 
+    # Eliminar la clase "C" de Kicker_Side ya que es muy poco representada y puede generar ruido en el modelo | Remove the "C" class from Kicker_Side since it is very underrepresented and can generate noise in the model
+    data = data[data["Kicker_Side"] != "C"]
+
+    # Crear variable de diferencia de goles | Create goal difference variable
+    data["Goal_Diff"] = data["Home_Goals"] - data["Away_Goals"]
+    # Ajustar para visitantes | Adjust for away teams
+    data.loc[data["Team_Type"] == "A", "Goal_Diff"] *= -1
+
     # Mapear datos | Map data
     data["Kicker_Foot"] = data["Kicker_Foot"].map({
         "R": 0,
@@ -21,18 +29,19 @@ def runPreprocess(data):
     data["Kicker_Side"] = data["Kicker_Side"].map({
         "R": 1,
         "L": 0,
-        "C": 2
     })
     data["Team_Type"] = data["Team_Type"].map({
         "H": 1,
         "A": 0
     })
 
+    data["Foot_vs_Side"] = data["Kicker_Foot"] == data["Kicker_Side"]
+
+
     # Seleccionar características y target | Select features and target
     features = [
         "Kicker_Foot",
-        "Home_Goals",
-        "Away_Goals",
+        "Goal_Diff",
         "Minute",
         "Team_Type"
     ]

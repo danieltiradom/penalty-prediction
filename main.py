@@ -1,5 +1,8 @@
 import pandas as pd
-from EDA import *
+#from EDA import runEDA
+import sys
+sys.path.append('./src')
+from train import runTrain
 
 # ------------- DATA LOAD --------------
 
@@ -7,5 +10,6 @@ from EDA import *
 data = pd.read_csv('data/data.csv')
 
 
+runTrain()
+#runEDA(data)
 
-runEDA(data)
