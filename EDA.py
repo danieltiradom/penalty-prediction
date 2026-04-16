@@ -17,6 +17,7 @@ def runEDA(data):
     print("\n------Valores unicos de Kicker_Foot------:")
     print(data["Kicker_Foot"].unique())
     print(data["Kicker_Foot"].isna().sum())
+    
     print("\n------Valores unicos de Kicker_Side------:")
     print(data["Kicker_Side"].unique())
     print(data["Kicker_Side"].isna().sum())
@@ -42,4 +43,5 @@ def runEDA(data):
     plt.show()
     plt.close()
     """
+
     

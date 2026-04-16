@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix
 def runTrain():
     # Cargar y procesar datos | Load and process data
     data = pd.read_csv('data/data.csv')
-    x, y = runPreprocess(data)
+    x, y = runPreprocess(data, is_train=True)
 
     # Dividir datos en entrenamiento y prueba | Split data into training and testing
     from sklearn.model_selection import train_test_split
@@ -47,6 +47,8 @@ def runTrain():
     print("Matriz de confusión:")
     print(confusion_matrix(y_test, y_pred))
 
+    joblib.dump(model, "models/model.pkl")
+    joblib.dump(scaler, "models/scaler.pkl")
 
 if __name__ == "__main__":
     runTrain()

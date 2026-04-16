@@ -1,15 +1,27 @@
 import pandas as pd
-#from EDA import runEDA
 import sys
 sys.path.append('./src')
+from EDA import runEDA
 from train import runTrain
+from predict import runPredict
+
+
 
 # ------------- DATA LOAD --------------
 
 # Cargar datos | Load data
 data = pd.read_csv('data/data.csv')
 
+dataPredict = {
+    "Kicker_Foot": "R",
+    "Home_Goals": 1,
+    "Away_Goals": 0,
+    "Minute": 56,
+    "Team_Type": "H"
+}
 
-runTrain()
+result = runPredict(dataPredict)
+print("Prediccion:", result)
+#runTrain()
 #runEDA(data)
 
