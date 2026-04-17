@@ -17,10 +17,13 @@ def runEDA(data):
     print("\n------Valores unicos de Kicker_Foot------:")
     print(data["Kicker_Foot"].unique())
     print(data["Kicker_Foot"].isna().sum())
+    print(data["Kicker_Foot"].value_counts())
     
     print("\n------Valores unicos de Kicker_Side------:")
     print(data["Kicker_Side"].unique())
     print(data["Kicker_Side"].isna().sum())
+    print(data["Kicker_Side"].value_counts())
+
     print("\n------Valores unicos de Home_Goals------:")
     print(data["Home_Goals"].unique())
     print(data["Home_Goals"].isna().sum())

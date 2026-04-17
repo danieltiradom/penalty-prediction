@@ -1,6 +1,6 @@
 import joblib
 import pandas as pd
-from preprocess import runPreprocess
+from src.preprocess import runPreprocess
 
 def runPredict(dataPredict):
     
@@ -22,6 +22,6 @@ def runPredict(dataPredict):
     prediction = model.predict(x)
 
     if prediction[0] == 0:
-        return "Izquierda"
-    else:
         return "Derecha"
+    else:
+        return "Izquierda"

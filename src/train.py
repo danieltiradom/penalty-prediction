@@ -17,13 +17,13 @@ def runTrain():
 
     # Dividir datos en entrenamiento y prueba | Split data into training and testing
     from sklearn.model_selection import train_test_split
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=49, stratify=y)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=43, stratify=y)
 
     # Escalar variables numericas (Esto sirve para "igualar" la importancia de las variables) | Scale numerical variables (This helps to "equalize" the importance of the variables)
     # Solo escalo estas variables, y no las categoricas (Kicker_Foot, Team_Type) ya que no representan una magnitud, sino una categoria | I only scale these variables, and not the categorical ones (Kicker_Foot, Team_Type) since they do not represent a magnitude, but a category
     scaler = StandardScaler()
 
-    numeric_cols = ["Goal_Diff", "Minute"]
+    numeric_cols = ["Goal_Diff"]
 
     x_train[numeric_cols] = scaler.fit_transform(x_train[numeric_cols])
     x_test[numeric_cols] = scaler.transform(x_test[numeric_cols])
@@ -47,8 +47,8 @@ def runTrain():
     print("Matriz de confusión:")
     print(confusion_matrix(y_test, y_pred))
 
-    joblib.dump(model, "models/model.pkl")
-    joblib.dump(scaler, "models/scaler.pkl")
+    #joblib.dump(model, "models/modelv2.pkl")
+    #joblib.dump(scaler, "models/scalerv2.pkl")
 
 if __name__ == "__main__":
     runTrain()

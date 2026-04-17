@@ -39,14 +39,16 @@ def runPreprocess(data, is_train=True):
 
     if is_train:
         data["Kicker_Side"] = data["Kicker_Side"].map({
-            "R": 1,
-            "L": 0,
+            "R": 0,
+            "L": 1,
         })
     data["Team_Type"] = data["Team_Type"].map({
         "H": 1,
         "A": 0
     })
 
+    # Si el minuto es 45 o menos, lo marco como 0 y si es mayor a 45, lo marco como 1. | If the minute is 45 or less, I mark it as 0 and if it is greater than 45, I mark it as 1.
+    data["Minute"] = (data["Minute"] > 45).astype(int)
     #data["Foot_vs_Side"] = data["Kicker_Foot"] == data["Kicker_Side"]
 
     # Seleccionar características y target | Select features and target
